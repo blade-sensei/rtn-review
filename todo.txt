@@ -1,1 +1,17 @@
 1. First just to call github API
+
+
+Note:
+
+It seems that i cant get issue name in a single GET request issues/comments
+so i need to do a request to each issues url...
+
+If we theory i only need comments for a specific ONE day.
+that means there will not be more than 30 comments per day. So it equals to do 30 request for issues 
+information
+
+The solution maybe will be to:
+fetch /issues for only 1 repo (learning) for 1 day.
+then get all comments for 1 day of each issues
+
+since parameter returns only updated comments... bad for me.

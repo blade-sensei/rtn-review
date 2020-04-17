@@ -8,8 +8,11 @@ const Review = () => {
   useEffect(() => {
     // get data from GitHub api
     const test = async () => {
-      const data = await fetch(`https://api.github.com/repos/gatsbyjs/gatsby`)
+      const data = await fetch(`https://api.github.com/repos/blade-sensei/learning/issues/72/comments?since=2020-04-11`, {
+        crossDomain: true,
+      })
       const json = await data.json();
+      console.log(json);
       setUserName(json);
     };
     test();
