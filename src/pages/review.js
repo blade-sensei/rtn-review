@@ -8,7 +8,7 @@ const Review = () => {
   useEffect(() => {
     // get data from GitHub api
     const test = async () => {
-      const data = await fetch(`https://api.github.com/repos/blade-sensei/learning/issues/72/comments?since=2020-04-11`, {
+      const data = await fetch(`https://api.github.com/user/blade-sensei/issues`, {
         crossDomain: true,
       })
       const json = await data.json();

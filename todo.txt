@@ -3,10 +3,10 @@
 
 Note:
 
-It seems that i cant get issue name in a single GET request issues/comments
+P: It seems that i cant get issue name in a single GET request issues/comments
 so i need to do a request to each issues url...
 
-If we theory i only need comments for a specific ONE day.
+S: If we theory i only need comments for a specific ONE day.
 that means there will not be more than 30 comments per day. So it equals to do 30 request for issues 
 information
 
@@ -14,4 +14,57 @@ The solution maybe will be to:
 fetch /issues for only 1 repo (learning) for 1 day.
 then get all comments for 1 day of each issues
 
-since parameter returns only updated comments... bad for me.
+P: since parameter returns only updated comments... bad for me.
+
+S: The solution would be to fetch all issues. Filter only issues that match with
+specific day/date, when create requests to get comments of issues.
+
+P: With Github RestAPI i can get issues of user ( i didnt tried but it seems you can)
+i can also get issues from specific repository. 
+But in any case the response doesnt provide comments arrays.
+One solution could be to fetch comments directly with "issues/comments" route BUT
+the response doesnt provide "issue" information, so in both cases i need to do 
+more requests for issues or comments. 
+
+S: Github also provides GraphQL API i did some test this query works for me
+query {
+  
+  viewer {
+  issues(
+    first: 5
+    orderBy: { field: UPDATED_AT, direction: ASC},
+    filterBy: { since: "2020-04-18T00:00:00Z"}
+  ) {
+      edges {
+        node {
+          repository {
+            name
+          }
+          labels(first: 4) {
+            edges {
+              node {
+                name
+              }
+            }
+          }
+          title,
+          createdAt,
+          updatedAt
+          state
+          comments(first:10) {
+            edges {
+              node {
+                body
+                createdAt,
+                updatedAt
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
