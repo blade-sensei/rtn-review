@@ -66,5 +66,18 @@ query {
   }
 }
 
+This query allow me to get 
+issues of specific date. I will pick first 5 issues WHY ?
+As we cant request issues for 1 ONLY DAY, i can only get 
+AFTER DATE issues.
+Solution: As the response is ASC the first objects are the closest to the date
+i don't need the latest objects. This is to match and only get the 
+issues of the DAY.
+
+Then i can get issues information like labels/name/number/state (without need extra request
+as like using rest API)
+
+I can access comments directly, i assume that i will not comment more than 10 times 
+an issue. so i set limit to first 10 comments per issue.
 
 
