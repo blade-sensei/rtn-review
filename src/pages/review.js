@@ -15,7 +15,7 @@ const Review = () => {
   const state = useContext(GlobalStateContext)
  
   const [userName, setUserName] = useState(0)
-  const [issues, setIssues] = useState(0)
+  const [issues, setIssues] = useState([])
   useEffect(() => {
 
     console.log(dispatch)
@@ -23,9 +23,9 @@ const Review = () => {
       query: githubIssues
     })
     .then(result => {
-      console.log(result)
+      
       const { name } = result.data.viewer
-      const {edges: issues  } = result.data.viewer.issues;
+      const { edges: issues  } = result.data.viewer.issues;
       setUserName(name);
       setIssues(issues);
     });
@@ -37,12 +37,13 @@ const Review = () => {
   }
   console.log(state);
 
+  const issuesComp =  issues.map(issue => ( <Issues issues={issues}/>));
   return (
     <Layout>
       {`github user: ${userName}`}
-      {`issues: ${issues}`}
-      <button onClick={ handleClick }> change </button>
-      <Issues git={userName} />
+      {
+        issuesComp
+      }
     </Layout>
   )
 }
