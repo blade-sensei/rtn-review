@@ -1,9 +1,9 @@
-import React from "react"
-import { ApolloClient } from 'apollo-boost';
-import { ApolloProvider } from '@apollo/react-hooks';
+import React, { useState } from "react"
+import  ApolloClient  from 'apollo-boost';
+export const GlobalStateContext = React.createContext()
+export const GlobalDispatchContext = React.createContext()
 
-
-const token = '74e24bcbe0b65796f70d82a33c8b093a0bd06ad4';
+const token = 'e6edbaf1ecc806adfbacf1aff299a0953bdabe82';
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
   request: (operation) => {
@@ -16,11 +16,22 @@ const client = new ApolloClient({
 });
 
 
+const initialState = {
+  client
+}
+
+function reducer(state, action) {
+  return state;
+}
+
 const GlobalContextProvider = ({ children }) => {
+  const [state, dispatch] = React.useReducer(reducer, initialState)
   return (
-      <ApolloProvider client={client}>
+    <GlobalStateContext.Provider value={state}>
+      <GlobalDispatchContext.Provider value={dispatch}>
         {children}
-      </ApolloProvider>
+      </GlobalDispatchContext.Provider>
+    </GlobalStateContext.Provider>
   )
 }
 
