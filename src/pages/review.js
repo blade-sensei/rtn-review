@@ -12,28 +12,36 @@ const Review = () => {
   
   const dispatch = useContext(GlobalDispatchContext)
   const state = useContext(GlobalStateContext)
-  console.log(dispatch)
-  state.client.query({
-    query: gql`
-      {
-        viewer {
-          name
-        }
-      }
-    `
-  })
-  .then(result => console.log(result));
+ 
   const [userName, setUserName] = useState(0)
   useEffect(() => {
 
+    console.log(dispatch)
+    state.client.query({
+      query: gql`
+        {
+          viewer {
+            name
+          }
+        }
+      `
+    })
+    .then(result => {
+      console.log(result)
+      setUserName(result.data.viewer.name);
+    });
+
     // get data from GitHub api
   }, [])
-
+  const handleClick = () => {
+    setUserName('test');
+  }
   console.log(state);
 
   return (
     <Layout>
       {`test: ${userName}`}
+      <button onClick={ handleClick }> change </button>
       <Issues git={userName} />
     </Layout>
   )

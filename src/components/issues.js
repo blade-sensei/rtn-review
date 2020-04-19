@@ -8,7 +8,7 @@ class Issues extends React.Component {
   }
 
   render() {
-    return <div> list of issues </div>
+    return <div> list of issues { this.props.git } </div>
   }
 }
 
