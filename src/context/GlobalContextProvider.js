@@ -3,7 +3,7 @@ import  ApolloClient  from 'apollo-boost';
 export const GlobalStateContext = React.createContext()
 export const GlobalDispatchContext = React.createContext()
 
-const token = 'df0ad05d2d05bb3f3790d060860499fd017c2b26';
+const token = '18f4c62def03f8c13e01caf2bf9e0bccc0691ad5';
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
   request: (operation) => {
