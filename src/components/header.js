@@ -1,7 +1,5 @@
-import React from 'react';
+import React from "react"
 
 export default () => {
-  return (
-    <header> this is header </header> 
-  )
+  return <header> this is header </header>
 }

@@ -1,7 +1,5 @@
-import React from 'react';
+import React from "react"
 
 export default () => {
-  return (
-    <footer> this is header </footer> 
-  )
+  return <footer> this is header </footer>
 }
