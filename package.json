@@ -18,7 +18,8 @@
     "apollo-boost": "^0.4.7",
     "gatsby": "^2.20.12",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-html-parser": "^2.0.2"
   },
   "devDependencies": {
     "prettier": "2.0.4"
