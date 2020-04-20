@@ -12,6 +12,7 @@ const githubIssues = gql`
         edges {
           node {
             id
+            url
             repository {
               name
             }
@@ -31,6 +32,7 @@ const githubIssues = gql`
               edges {
                 node {
                   id
+                  url
                   body
                   createdAt
                   updatedAt

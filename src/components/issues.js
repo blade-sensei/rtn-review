@@ -7,7 +7,7 @@ const Issues = ({issue}) => {
   return (
     <div className='issue-container'>
       <span> state: { issue.state } </span>
-
+      <a href={ issue.url }>issue url </a>
       <div> { issue.title } </div>
       <span> { issue.number } / { issue.repository.name} </span>
       <div className='test'>
