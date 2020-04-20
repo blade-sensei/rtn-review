@@ -80,4 +80,11 @@ as like using rest API)
 I can access comments directly, i assume that i will not comment more than 10 times 
 an issue. so i set limit to first 10 comments per issue.
 
+20/04
+I can call GraphQL API Github with Apollo 
+I pass client apollo instance. Works in browser
 
+Now i need to refactor components
+- Issue  to display issue name, number, tags name, state (open/close)
+- Comment display title, date, content.
+- Issuing function components (not class)

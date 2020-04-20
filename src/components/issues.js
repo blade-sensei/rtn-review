@@ -1,14 +1,11 @@
 import React from "react"
 
-class Issues extends React.Component {
-  constructor(props) {
-    super(props)
-    this.props = props
-  }
 
-  render() {
-    return <div> list of issues { this.props.issues.node.title } </div>
-  }
+const Issues = ({issues}) => {
+  
+  return (
+     <div> list of issues { issues.title } </div>
+  )
 }
 
 export default Issues

@@ -35,9 +35,9 @@ const Review = () => {
   const handleClick = () => {
     setUserName('test');
   }
-  console.log(state);
+  console.log(issues);
 
-  const issuesComp =  issues.map(issue => ( <Issues issues={issues}/>));
+  const issuesComp =  issues.map(issue => ( <Issues issues={issue.node}/>));
   return (
     <Layout>
       {`github user: ${userName}`}
