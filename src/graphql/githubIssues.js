@@ -31,7 +31,7 @@ const githubIssues = gql`
               edges {
                 node {
                   id
-                  bodyHTML
+                  body
                   createdAt
                   updatedAt
                 }
