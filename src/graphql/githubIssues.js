@@ -21,6 +21,7 @@ const githubIssues = gql`
                 }
               }
             }
+            number
             title
             createdAt
             updatedAt
