@@ -37,7 +37,7 @@ const Review = () => {
   }
   console.log(issues);
 
-  const issuesComp =  issues.map(issue => ( <Issues issue={issue.node}/>));
+  const issuesComp =  issues.map(issue => ( <Issues key={issue.node.id } issue={issue.node}/>));
   return (
     <Layout>
       {`github user: ${userName}`}

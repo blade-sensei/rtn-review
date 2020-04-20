@@ -1,4 +1,5 @@
 import React from "react"
+import Comment from './comment';
 
 
 const Issues = ({issue}) => {
@@ -15,6 +16,12 @@ const Issues = ({issue}) => {
         ))
         }
       </div>
+      {
+        issue.comments.edges.map(({ node:comment }) => (
+          <Comment key={comment.id} comment={comment} />
+        ))
+      }
+
     </div>
 
   )

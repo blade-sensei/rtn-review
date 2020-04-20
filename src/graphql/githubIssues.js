@@ -11,6 +11,7 @@ const githubIssues = gql`
       ) {
         edges {
           node {
+            id
             repository {
               name
             }
@@ -29,6 +30,7 @@ const githubIssues = gql`
             comments(first: 10) {
               edges {
                 node {
+                  id
                   bodyHTML
                   createdAt
                   updatedAt
