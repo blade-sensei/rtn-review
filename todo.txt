@@ -93,6 +93,7 @@ Next:
 Primary
 - toggle issues first 
 - toggle comment
+- filter comment for specific date
 
 Second
 - Format dates

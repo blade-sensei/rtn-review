@@ -1,49 +1,60 @@
 import React, { useState, useEffect, useContext } from "react"
 import Layout from "../components/layout"
 import Issues from "../components/issues"
-import { gql } from "apollo-boost";
 import { githubIssues } from '../graphql/githubIssues'
 
 import {
-  GlobalDispatchContext,
   GlobalStateContext,
 } from "../context/GlobalContextProvider"
 
 const Review = () => {
   
-  const dispatch = useContext(GlobalDispatchContext)
-  const state = useContext(GlobalStateContext)
+  const state = useContext(GlobalStateContext);
  
-  const [userName, setUserName] = useState(0)
-  const [issues, setIssues] = useState([])
-  useEffect(() => {
+  const [userName, setUserName] = useState(0);
+  const [issues, setIssues] = useState([]);
 
-    console.log(dispatch)
-    state.client.query({
-      query: githubIssues
-    })
-    .then(result => {
-      
+  const date = new Date();
+
+  useEffect(() => {
+    const getGithubIssues = async () => {
+      const result = await state.client.query({query: githubIssues})
       const { name } = result.data.viewer
       const { edges: issues  } = result.data.viewer.issues;
       setUserName(name);
-      setIssues(issues);
+      const filterIssues = issues.map(issue => {
+        let comments = issue.node.comments.edges;
+        const date = new Date('2020-04-19');
+        console.log(date);
+        comments = filterCommentsByDate(comments, date);
+        console.log(comments);
+        issue.node.comments.edges = comments;
+        return issue;
+      })
+      setIssues(filterIssues);
+    }
+    getGithubIssues(); 
+  }, []);
+
+  const filterCommentsByDate = (comments, date) => {
+    const dateISO = date.toDateString();
+    return comments.filter(({node: comment}) => {
+      let commentDate = new Date(comment.updatedAt);
+      commentDate = commentDate.toDateString();
+      return commentDate === dateISO;
     });
-
-    // get data from GitHub api
-  }, [])
-  const handleClick = () => {
-    setUserName('test');
   }
-  console.log(issues);
 
-  const issuesComp =  issues.map(issue => ( <Issues key={issue.node.id } issue={issue.node}/>));
+  const listIssueComponents =  issues.map(issue => {
+    return (<div className='issue-container'>
+      <Issues key={issue.node.id } issue={issue.node}/>
+    </div>)
+    
+  });
   return (
     <Layout>
       {`github user: ${userName}`}
-      {
-        issuesComp
-      }
+      { listIssueComponents }
     </Layout>
   )
 }

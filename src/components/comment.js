@@ -1,13 +1,21 @@
-import React from "react"
+import React, { useState } from "react"
 const ReactMarkdown = require('react-markdown')
-const Comment = ({comment}) => {
-  
+const Comment = ({ comment }) => {
+  const [isOpen, setIsOpen] = useState(true);
+  const handlerToggle = () => {
+    setIsOpen(!isOpen);
+  }
   return (
-   <div>
-     <a href={ comment.url }> go to </a>
-     <span>comment on : {comment.updatedAt }</span>
-     <ReactMarkdown  source={comment.body} />
-  </div>
+    <div className='c-comment'>
+      <button onClick={handlerToggle} > {'comment ' + isOpen.toString()}</button>
+      { isOpen && 
+        <div className='comment-info'>
+          <a href={comment.url}> go to </a>
+          <span>comment on : {comment.updatedAt}</span>
+          <ReactMarkdown source={comment.body} />
+        </div>
+      }
+    </div>
   )
 }
 

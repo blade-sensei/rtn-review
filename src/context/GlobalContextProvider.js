@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import  ApolloClient  from 'apollo-boost';
 import githubToken from '../secrets'
 
