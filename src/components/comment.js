@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import './comment.css';
+
 const ReactMarkdown = require('react-markdown')
 const Comment = ({ comment }) => {
   const [isOpen, setIsOpen] = useState(true);
