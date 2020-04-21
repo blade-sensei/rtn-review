@@ -13,18 +13,27 @@ const Review = () => {
  
   const [userName, setUserName] = useState(0);
   const [issues, setIssues] = useState([]);
-  let date = new Date();
-  date.setHours(0,0,0,0);
-  const [currentDate, setCurrentDate] = useState(date);
-  const handlerDate = async (e) => {
-    console.log(e.target.value)
+
+  const initDate = () => {
+    let date = new Date();
+    date.setHours(0,0,0,0);
+    return date;
+  }
+  
+  const [currentDate, setCurrentDate] = useState(initDate());
+
+  
+  
+  const handlerDate = (e) => {
     const pickedDate = new Date(e.target.value);
-    console.log(pickedDate);
-    await setCurrentDate(pickedDate);
+    setCurrentDate(pickedDate);
+
   }
 
   const formatDate = () => {
-    return currentDate.toJSON().slice(0, 10).replace(/\//g, '-')
+    let formattedDate = currentDate.toLocaleDateString();
+    formattedDate = formattedDate.split('/').reverse().join('-');
+    return formattedDate
   }
 
   const getGithubIssues = async () => {
@@ -32,29 +41,29 @@ const Review = () => {
       query: githubIssues,
       variables : { date: currentDate.toISOString() }
     })
-    console.log(result);
     const { name } = result.data.viewer
-    const { edges: issues  } = result.data.viewer.issues;
+    let { edges: issues  } = result.data.viewer.issues;
     setUserName(name);
-    const filterIssues = issues.map(issue => {
+    issues = filterByDate(issues, currentDate);
+    issues = issues.map(issue => {
       let comments = issue.node.comments.edges;
-      comments = filterCommentsByDate(comments, currentDate);
+      comments = filterByDate(comments, currentDate);
       issue.node.comments.edges = comments;
       return issue;
-    })
-    setIssues(filterIssues);
+    });
+    setIssues(issues);
   }
 
   useEffect(() => {
     getGithubIssues(); 
-  }, []);
+  }, currentDate);
 
-  const filterCommentsByDate = (comments, date) => {
+  const filterByDate = (list, date) => {
     const dateISO = date.toDateString();
-    return comments.filter(({node: comment}) => {
-      let commentDate = new Date(comment.updatedAt);
-      commentDate = commentDate.toDateString();
-      return commentDate === dateISO;
+    return list.filter(({node: instance}) => {
+      let instanceDate = new Date(instance.updatedAt);
+      instanceDate = instanceDate.toDateString();
+      return instanceDate === dateISO;
     });
   }
 

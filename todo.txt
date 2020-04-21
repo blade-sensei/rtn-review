@@ -94,8 +94,11 @@ Primary
 - toggle issues first DONE
 - toggle comment DONE
 - filter comment for specific date DONE
-- graphql add parameter for date
+- graphql add parameter for date DONE
 
+- Date picker doesnt work when we change it (no update), i think it
+beacause we set the state and after we call graphql but as setState is 
+async grpaql has not the current date changed 
 Second
 - Format dates
 - change size images
