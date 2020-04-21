@@ -13,26 +13,39 @@ const Review = () => {
  
   const [userName, setUserName] = useState(0);
   const [issues, setIssues] = useState([]);
-  const [currentDate, setCurrentDate] = useState(new Date('2020-04-19'));
+  let date = new Date();
+  date.setHours(0,0,0,0);
+  const [currentDate, setCurrentDate] = useState(date);
+  const handlerDate = async (e) => {
+    console.log(e.target.value)
+    const pickedDate = new Date(e.target.value);
+    console.log(pickedDate);
+    await setCurrentDate(pickedDate);
+  }
+
+  const formatDate = () => {
+    return currentDate.toJSON().slice(0, 10).replace(/\//g, '-')
+  }
+
+  const getGithubIssues = async () => {
+    const result = await state.client.query({
+      query: githubIssues,
+      variables : { date: currentDate.toISOString() }
+    })
+    console.log(result);
+    const { name } = result.data.viewer
+    const { edges: issues  } = result.data.viewer.issues;
+    setUserName(name);
+    const filterIssues = issues.map(issue => {
+      let comments = issue.node.comments.edges;
+      comments = filterCommentsByDate(comments, currentDate);
+      issue.node.comments.edges = comments;
+      return issue;
+    })
+    setIssues(filterIssues);
+  }
 
   useEffect(() => {
-    const getGithubIssues = async () => {
-      const result = await state.client.query({
-        query: githubIssues,
-        variables : { date: currentDate.toISOString() }
-      })
-      const { name } = result.data.viewer
-      const { edges: issues  } = result.data.viewer.issues;
-      setUserName(name);
-      const filterIssues = issues.map(issue => {
-        let comments = issue.node.comments.edges;
-        comments = filterCommentsByDate(comments, currentDate);
-        console.log(comments);
-        issue.node.comments.edges = comments;
-        return issue;
-      })
-      setIssues(filterIssues);
-    }
     getGithubIssues(); 
   }, []);
 
@@ -53,8 +66,17 @@ const Review = () => {
   });
   return (
     <Layout>
+      <div>
+        { formatDate() }
+        <input type='date' value={formatDate()} onChange={handlerDate}/>
+      </div>
       {`github user: ${userName}`}
-      { listIssueComponents }
+      { issues.map(issue => {
+    return (<div className='issue-container'>
+      <Issues key={issue.node.id } issue={issue.node}/>
+    </div>)
+    
+  }) }
     </Layout>
   )
 }
