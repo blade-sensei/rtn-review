@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Comment from './comment';
+import Label from './label';
 import './issue.css';
 
 const Issues = ({issue}) => {
@@ -34,7 +35,7 @@ const Issues = ({issue}) => {
         <div className='labels'>
           {
             issue.labels.edges.map(({node: label }) => (
-              <span> #{ label.name } </span>
+              <Label label={ label }/>
             ))
           }
         </div>

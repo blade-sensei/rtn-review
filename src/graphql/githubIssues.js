@@ -20,6 +20,7 @@ const githubIssues = gql`
               edges {
                 node {
                   name
+                  color
                 }
               }
             }
