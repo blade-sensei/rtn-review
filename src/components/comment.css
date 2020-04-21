@@ -1,3 +1,8 @@
 img {
   max-width: 80%;
 }
+
+.c-comment > .icon-toggle {
+  cursor: pointer;
+  color: red;
+}

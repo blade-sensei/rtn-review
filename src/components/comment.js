@@ -15,9 +15,21 @@ const Comment = ({ comment }) => {
     )
   }
 
+  const iconToggle = {
+    open: '\u25BC',
+    close: '\u25B6',
+  }
+
+  const getArrow = () => {
+    const icon = isOpen ? iconToggle.open : iconToggle.close;
+    return (
+      <span className='icon-toggle' onClick={handlerToggle}> {icon} </span>
+    )
+  }
+
   return (
     <div className='c-comment'>
-      <button onClick={handlerToggle} > {'comment ' + isOpen.toString()}</button>
+      { getArrow()}
       { isOpen && 
         <div className='comment-info'>
           <a href={comment.url}> go to </a>

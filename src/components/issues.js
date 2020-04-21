@@ -1,17 +1,29 @@
 import React, { useState } from "react"
 import Comment from './comment';
-
+import './issue.css';
 
 const Issues = ({issue}) => {
+
   const [isOpen, setIsOpen] = useState(true);
 
+  const iconToggle = {
+    open: '\u25BC',
+    close: '\u25B6',
+  }
   const handlerToggle = () => {
     setIsOpen(!isOpen);
   }
 
+  const getArrow = () => {
+    const icon = isOpen ? iconToggle.open : iconToggle.close;
+    return (
+      <span className='icon-toggle' onClick={handlerToggle}> {icon} </span>
+    )
+  }
+
   return (
     <div className='c-issue'>
-      <button onClick={handlerToggle} >{ isOpen.toString() } </button>
+      { getArrow() }
       <span> { isOpen.toString() } </span>      
       { isOpen && 
         <div className='issue-info'> 
