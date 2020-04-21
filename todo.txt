@@ -91,9 +91,10 @@ Now i need to refactor components
 
 Next:
 Primary
-- toggle issues first 
-- toggle comment
-- filter comment for specific date
+- toggle issues first DONE
+- toggle comment DONE
+- filter comment for specific date DONE
+- graphql add parameter for date
 
 Second
 - Format dates

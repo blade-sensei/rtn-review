@@ -13,20 +13,20 @@ const Review = () => {
  
   const [userName, setUserName] = useState(0);
   const [issues, setIssues] = useState([]);
-
-  const date = new Date();
+  const [currentDate, setCurrentDate] = useState(new Date('2020-04-19'));
 
   useEffect(() => {
     const getGithubIssues = async () => {
-      const result = await state.client.query({query: githubIssues})
+      const result = await state.client.query({
+        query: githubIssues,
+        variables : { date: currentDate.toISOString() }
+      })
       const { name } = result.data.viewer
       const { edges: issues  } = result.data.viewer.issues;
       setUserName(name);
       const filterIssues = issues.map(issue => {
         let comments = issue.node.comments.edges;
-        const date = new Date('2020-04-19');
-        console.log(date);
-        comments = filterCommentsByDate(comments, date);
+        comments = filterCommentsByDate(comments, currentDate);
         console.log(comments);
         issue.node.comments.edges = comments;
         return issue;
