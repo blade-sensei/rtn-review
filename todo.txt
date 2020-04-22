@@ -103,4 +103,7 @@ Second
 - Format dates done
 - change size images done
 - add icon to open/close done
-- label colors
+- label colors done
+
+- change style for code markdown
+https://medium.com/young-developer/react-markdown-code-and-syntax-highlighting-632d2f9b4ada

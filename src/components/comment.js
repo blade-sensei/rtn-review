@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import './comment.css';
+import CodeBlock from './CodeBlock'
 
 const ReactMarkdown = require('react-markdown')
 const Comment = ({ comment }) => {
@@ -34,7 +35,13 @@ const Comment = ({ comment }) => {
         <div className='comment-info'>
           <a href={comment.url}> go to </a>
           <span>comment on : {formatDate(comment.updatedAt)}</span>
-          <ReactMarkdown source={comment.body} />
+          <ReactMarkdown
+            source={comment.body}
+            renderers={
+              { code: CodeBlock}
+              
+            }
+          />
         </div>
       }
     </div>
