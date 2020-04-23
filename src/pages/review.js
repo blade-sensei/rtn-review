@@ -26,9 +26,10 @@ const Review = () => {
   
   
   const handlerDate = (e) => {
-    const pickedDate = new Date(e.target.value);
-    setCurrentDate(pickedDate);
-
+    if (e.target.value) {
+      return setCurrentDate(new Date(e.target.value));
+    }
+    return setCurrentDate(new Date());
   }
 
   const formatDate = () => {
