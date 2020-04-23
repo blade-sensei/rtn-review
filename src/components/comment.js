@@ -35,6 +35,7 @@ const Comment = ({ comment }) => {
         <div className='comment-info'>
           <a href={comment.url}> go to </a>
           <span>comment on : {formatDate(comment.updatedAt)}</span>
+          <div className='comment-body markdown'>
           <ReactMarkdown
             source={comment.body}
             renderers={
@@ -42,6 +43,7 @@ const Comment = ({ comment }) => {
               
             }
           />
+          </div>
         </div>
       }
     </div>

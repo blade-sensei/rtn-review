@@ -107,3 +107,11 @@ Second
 
 - change style for code markdown
 https://medium.com/young-developer/react-markdown-code-and-syntax-highlighting-632d2f9b4ada
+done
+
+- Now free style ...
+- add comment url
+- text when issues are empty
+- icon for open/close
+- add image url
+- push to firebase or netlify (maybe both to test)
