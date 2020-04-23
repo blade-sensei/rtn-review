@@ -5,7 +5,7 @@ const Label = ({label}) => {
   
   return (
     <div className='c-label'>
-      <span className='label'> { label.name } </span>
+      <span className='label'> #{ label.name } </span>
       
     </div>
   )

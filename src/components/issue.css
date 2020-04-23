@@ -18,3 +18,7 @@ a:hover {
   text-decoration: underline;
   color: rgb(219, 11, 105);
 }
+
+.labels {
+  margin-top: 5px;
+}
