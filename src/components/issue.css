@@ -1,9 +1,10 @@
 .c-issue > .icon-toggle {
   cursor: pointer;
-  color: rgb(17, 131, 17);
+  color: rgb(222, 14, 110);
   height: 20px;
   margin-right: 10px;
   margin-top: 3px;
+  font-size: 0.8em;
 }
 
 .c-issue {

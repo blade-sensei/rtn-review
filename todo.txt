@@ -110,6 +110,7 @@ https://medium.com/young-developer/react-markdown-code-and-syntax-highlighting-6
 done
 
 - Now free style ...
+- toggle only hidde content cards comment
 - add comment url
 - text when issues are empty
 - icon for open/close

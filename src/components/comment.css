@@ -4,9 +4,10 @@ img {
 
 .c-comment > .icon-toggle {
   cursor: pointer;
-  color: red;
+  color: rgb(63, 231, 153);
   height: 20px;
   margin-right: 10px;
+  font-size: 0.8em;
   
 }
 

@@ -37,9 +37,9 @@ const Issues = ({issue}) => {
               <Label label={ label }/>
             ))
           }
+          <span className="issue-state"> { issue.state } </span>
+          <span className="total-comments">{ issue.comments.edges.length } comments</span>
         </div>
-        <span className="issue-state"> { issue.state } </span>
-        <span className="total-comments">{ issue.comments.edges.length } comments</span>
         {
           issue.comments.edges.map(({ node:comment }) => (
             <Comment key={comment.id} comment={comment} />
