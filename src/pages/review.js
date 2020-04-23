@@ -3,7 +3,6 @@ import Layout from "../components/layout"
 import Issues from "../components/issues"
 import { githubIssues } from '../graphql/githubIssues'
 import './review.css';
-
 import {
   GlobalStateContext,
 } from "../context/GlobalContextProvider"
@@ -75,12 +74,6 @@ const Review = () => {
     });
   }
 
-  const listIssueComponents =  issues.map(issue => {
-    return (<div className='issue-container'>
-      <Issues key={issue.node.id } issue={issue.node}/>
-    </div>)
-    
-  });
   return (
     <Layout>
 
@@ -97,7 +90,7 @@ const Review = () => {
           )
         })
        ) : (
-       <div className='no-issues'> 🙌 : There is no updated or created issues for this date {currentDate.toLocaleDateString()}</div>
+       <div className='no-issues'> 🙌 : There is no updated or created issues for this selected date</div>
        )
       }
     </Layout>
