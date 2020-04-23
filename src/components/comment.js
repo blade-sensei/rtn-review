@@ -33,8 +33,9 @@ const Comment = ({ comment }) => {
       { getArrow()}
       { isOpen && 
         <div className='comment-info'>
-          <a href={comment.url}> go to </a>
-          <span>comment on : {formatDate(comment.updatedAt)}</span>
+          <div className='title'>
+            <a href={comment.url}> comment on : {formatDate(comment.updatedAt)} </a>
+          </div>
           <div className='comment-body markdown'>
           <ReactMarkdown
             source={comment.body}

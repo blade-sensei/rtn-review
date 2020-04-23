@@ -22,3 +22,8 @@ a:hover {
 .labels {
   margin-top: 5px;
 }
+
+.total-comments {
+  font-size: 0.8em;
+  color: rgb(179, 179, 179);
+}
