@@ -1,10 +1,13 @@
 html {
   background-color: rgba(27, 29, 64, 0.92);
-  color: rgb(245, 247, 247);
+  color: white;
 }
 
 body {
-  padding-left: 20%;
-  padding-right: 20%;
+  padding: 0 15%;
   font-family:  'Source Sans Pro', sans-serif;
+}
+
+header {
+  font-size: 2.5em;
 }

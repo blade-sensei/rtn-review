@@ -15,6 +15,7 @@ const githubIssues = gql`
             url
             repository {
               name
+              url
             }
             labels(first: 4) {
               edges {

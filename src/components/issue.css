@@ -8,16 +8,22 @@
 }
 
 .c-issue {
-  display: inline-flex;
+  display: flex;
 }
 
-a {
+.issue-title a {
   text-decoration: none;
-  color:  white;
+  color: rgb(241, 235, 47);
 }
-a:hover {
+.issue-info a:hover {
   text-decoration: underline;
   color: rgb(219, 11, 105);
+}
+
+.repo-name a {
+ cursor: pointer; 
+ text-decoration: none;
+ color: rgb(159, 232, 205);
 }
 
 .labels {
@@ -27,4 +33,23 @@ a:hover {
 .total-comments {
   font-size: 0.8em;
   color: rgb(179, 179, 179);
+}
+
+.issue-state {
+  font-size: 0.8em;
+  color: rgb(179, 179, 179);
+  border-radius: 5px;
+  padding: 2px 6px;
+}
+
+.closed {
+  background-color: rgba(194, 6, 37, 0.877);
+}
+
+.open {
+  background-color: rgb(9, 121, 24);
+}
+
+.issue-info {
+  width: 100%;
 }

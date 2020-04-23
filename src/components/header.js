@@ -1,5 +1,5 @@
 import React from "react"
 
 export default () => {
-  return <header> this is header </header>
+  return <header> Github review </header>
 }

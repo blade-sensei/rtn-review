@@ -6,9 +6,8 @@ export default ({ children }) => {
   return (
     <div>
       <Header />
-      <div> this is layout content: </div>
+      <div> git issue comments </div>
       <div> {children} </div>
-      <Footer />
     </div>
   )
 }

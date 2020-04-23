@@ -76,17 +76,23 @@ const Review = () => {
   });
   return (
     <Layout>
+
       <div className="date-picker">
         <input type='date' value={formatDate()} onChange={handlerDate}/>
       </div>
-      { issues.map(issue => {
-    return (
-      <div className='issue-container'>
-        <Issues key={issue.node.id } issue={issue.node}/>
-      </div>
-    )
-    
-  }) }
+      
+      { (issues.length > 0) ? (
+        issues.map(issue => {
+          return (
+            <div className='issue-container'>
+              <Issues key={issue.node.id } issue={issue.node}/>
+            </div>
+          )
+        })
+       ) : (
+         <div> 🙌 : There is no updated or created issues for the selected day  </div>
+       )
+      }
     </Layout>
   )
 }
