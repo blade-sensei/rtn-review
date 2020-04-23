@@ -25,13 +25,13 @@ const Issues = ({issue}) => {
   return (
     <div className='c-issue'>
       { getArrow() }
-      <span> { isOpen.toString() } </span>      
       { isOpen && 
         <div className='issue-info'> 
-          <span> state: { issue.state } </span>
-        <a href={ issue.url }>issue url </a>
-        <div> { issue.title } </div>
-        <span> { issue.number } / { issue.repository.name} </span>
+          <span> { issue.state } </span>
+          <span className="issue-title">
+            <a href={ issue.url }> { issue.title} #{issue.number} </a>
+          </span>
+          <span> / {issue.repository.name} </span>
         <div className='labels'>
           {
             issue.labels.edges.map(({node: label }) => (

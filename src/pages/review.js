@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react"
 import Layout from "../components/layout"
 import Issues from "../components/issues"
 import { githubIssues } from '../graphql/githubIssues'
+import './review.css';
 
 import {
   GlobalStateContext,
@@ -75,15 +76,15 @@ const Review = () => {
   });
   return (
     <Layout>
-      <div>
-        { formatDate() }
+      <div className="date-picker">
         <input type='date' value={formatDate()} onChange={handlerDate}/>
       </div>
-      {`github user: ${userName}`}
       { issues.map(issue => {
-    return (<div className='issue-container'>
-      <Issues key={issue.node.id } issue={issue.node}/>
-    </div>)
+    return (
+      <div className='issue-container'>
+        <Issues key={issue.node.id } issue={issue.node}/>
+      </div>
+    )
     
   }) }
     </Layout>

@@ -1,4 +1,20 @@
 .c-issue > .icon-toggle {
   cursor: pointer;
-  color: rgb(17, 131, 17)
+  color: rgb(17, 131, 17);
+  height: 20px;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.c-issue {
+  display: inline-flex;
+}
+
+a {
+  text-decoration: none;
+  color:  white;
+}
+a:hover {
+  text-decoration: underline;
+  color: rgb(219, 11, 105);
 }
