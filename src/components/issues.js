@@ -25,7 +25,6 @@ const Issues = ({issue}) => {
   return (
     <div className='c-issue'>
       { getArrow() }
-      { isOpen && 
         <div className='issue-info'>
           <span className="issue-title">
             <a href={ issue.url }> { issue.title} #{issue.number} </a>
@@ -40,15 +39,13 @@ const Issues = ({issue}) => {
           <span className="issue-state"> { issue.state } </span>
           <span className="total-comments">{ issue.comments.edges.length } comments</span>
         </div>
-        {
+        { isOpen && 
           issue.comments.edges.map(({ node:comment }) => (
             <Comment key={comment.id} comment={comment} />
           ))
         }
         </div>
-      }
     </div>
-
   )
 }
 

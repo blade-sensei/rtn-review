@@ -31,11 +31,12 @@ const Comment = ({ comment }) => {
   return (
     <div className='c-comment'>
       { getArrow()}
-      { isOpen && 
+   
         <div className='comment-info'>
           <div className='title'>
             <a href={comment.url}> comment on : {formatDate(comment.updatedAt)} </a>
           </div>
+          { isOpen && 
           <div className='comment-body markdown'>
           <ReactMarkdown
             source={comment.body}
@@ -44,9 +45,11 @@ const Comment = ({ comment }) => {
               
             }
           />
+          
           </div>
+          }
         </div>
-      }
+      
     </div>
   )
 }
