@@ -46,11 +46,11 @@
 }
 
 .closed {
-  background-color: rgba(194, 6, 37, 0.877);
+  background-color: rgba(218, 16, 16, 0.877);
 }
 
 .open {
-  background-color: rgb(9, 121, 24);
+  background-color: rgb(27, 165, 45);
 }
 
 .issue-info {

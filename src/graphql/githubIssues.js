@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost"
 
 const githubIssues = gql`
-  query Issues($date: DateTime!, $total: Int = 20) {
+  query Issues($date: DateTime!, $total: Int = 50) {
     viewer {
       name
       issues(
