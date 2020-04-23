@@ -11,9 +11,8 @@ import {
 const Review = () => {
   
   const state = useContext(GlobalStateContext);
- 
-  const [userName, setUserName] = useState(0);
   const [issues, setIssues] = useState([]);
+  
 
   const initDate = () => {
     let date = new Date();
@@ -43,9 +42,7 @@ const Review = () => {
       query: githubIssues,
       variables,
     })
-    const { name } = result.data.viewer
     let { edges: issues  } = result.data.viewer.issues;
-    setUserName(name);
     if (currentDate) {
       issues = filterByDate(issues, currentDate);
       issues = issues.map(issue => {
@@ -100,7 +97,7 @@ const Review = () => {
           )
         })
        ) : (
-         <div> 🙌 : There is no updated or created issues for the selected day  </div>
+       <div className='no-issues'> 🙌 : There is no updated or created issues for this date {currentDate.toLocaleDateString()}</div>
        )
       }
     </Layout>

@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import Comment from './comment';
 import Label from './label';
 import './issue.css';
-import { useStaticQuery } from "gatsby";
 
 const Issues = ({issue}) => {
 
