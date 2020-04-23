@@ -9,8 +9,8 @@ const Issues = ({issue}) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const iconToggle = {
-    open: '\u25BC',
-    close: '\u25B6',
+    open: '\u25B8',
+    close: '\u25BE',
   }
   const handlerToggle = () => {
     setIsOpen(!isOpen);
@@ -32,12 +32,12 @@ const Issues = ({issue}) => {
       { getArrow() }
         <div className='issue-info'>
           <span className="issue-title">
-            <a href={ issue.url }> { issue.title} #{issue.number} / </a>
+            <a href={ issue.url } target="_blank"> { issue.title} #{issue.number} / </a>
           </span>
           <span className='repo-name'>
-            <a href={ issue.repository.url }> {issue.repository.name} </a>
+            <a href={ issue.repository.url } target="_blank"> {issue.repository.name}  </a>
             </span>
-          <span className={`issue-state ${getState()}`}>{ getState()} </span>
+          <span className={`issue-state ${getState()}`}> { getState()} </span>
         <div className='labels'>
           {
             issue.labels.edges.map(({node: label }) => (

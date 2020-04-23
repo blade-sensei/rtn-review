@@ -4,25 +4,28 @@ img {
 
 .c-comment > .icon-toggle {
   cursor: pointer;
-  color: rgb(63, 231, 153);
+  color: black;
   height: 20px;
   margin-right: 10px;
-  font-size: 0.8em;
-  
+  font-size: 1.6em;  
 }
 
 .comment-info {
   margin-bottom: 5%;
   box-shadow: 1px 5px 10px 0 rgba(0,0,0,.1);;
   border-radius: 5px;
-  background:rgb(57, 61, 95);
+  background: rgb(245, 245, 255);
   font-size: 15px;
   line-height: 1.6;
   width: 100%
 }
 
+.title .link {
+  color: rgb(255, 255, 255);
+}
+
 .comment-info a {
-  color: white;
+  color: black;
 }
 
 .comment-info > .title {

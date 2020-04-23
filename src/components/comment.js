@@ -17,8 +17,8 @@ const Comment = ({ comment }) => {
   }
 
   const iconToggle = {
-    open: '\u25BC',
-    close: '\u25B6',
+    open: '\u25B8',
+    close: '\u25BE'
   }
 
   const getArrow = () => {
@@ -34,7 +34,7 @@ const Comment = ({ comment }) => {
    
         <div className='comment-info'>
           <div className='title'>
-            <a href={comment.url}> comment on : {formatDate(comment.updatedAt)} </a>
+            <a className='link' href={comment.url} target="_blank"> comment on : {formatDate(comment.updatedAt)} </a>
           </div>
           { isOpen && 
           <div className='comment-body markdown'>

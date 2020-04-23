@@ -18,46 +18,55 @@ const Review = () => {
   const initDate = () => {
     let date = new Date();
     date.setHours(0,0,0,0);
+    date.setDate(1);
     return date;
   }
   
-  const [currentDate, setCurrentDate] = useState(initDate());
+  const [currentDate, setCurrentDate] = useState(null);
 
-  
-  
   const handlerDate = (e) => {
     if (e.target.value) {
       return setCurrentDate(new Date(e.target.value));
     }
-    return setCurrentDate(new Date());
+    return setCurrentDate(null);
   }
 
   const formatDate = () => {
+    if (!currentDate) return '';
     let formattedDate = currentDate.toLocaleDateString();
     formattedDate = formattedDate.split('/').reverse().join('-');
     return formattedDate
   }
 
-  const getGithubIssues = async () => {
+  const getGithubIssues = async (variables) => {
     const result = await state.client.query({
       query: githubIssues,
-      variables : { date: currentDate.toISOString() }
+      variables,
     })
     const { name } = result.data.viewer
     let { edges: issues  } = result.data.viewer.issues;
     setUserName(name);
-    issues = filterByDate(issues, currentDate);
-    issues = issues.map(issue => {
-      let comments = issue.node.comments.edges;
-      comments = filterByDate(comments, currentDate);
-      issue.node.comments.edges = comments;
-      return issue;
-    });
+    if (currentDate) {
+      issues = filterByDate(issues, currentDate);
+      issues = issues.map(issue => {
+        let comments = issue.node.comments.edges;
+        comments = filterByDate(comments, currentDate);
+        issue.node.comments.edges = comments;
+        return issue;
+      });
+    }
     setIssues(issues);
   }
 
   useEffect(() => {
-    getGithubIssues(); 
+    let variables = {};
+    if (!currentDate) {
+      
+      variables = { date: initDate().toISOString()}
+    } else {
+      variables = { date: currentDate.toISOString(), total: 5 }
+    }
+    getGithubIssues(variables); 
   }, currentDate);
 
   const filterByDate = (list, date) => {

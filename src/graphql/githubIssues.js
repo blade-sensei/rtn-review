@@ -1,11 +1,11 @@
 import { gql } from "apollo-boost"
 
 const githubIssues = gql`
-  query Issues($date: DateTime!) {
+  query Issues($date: DateTime!, $total: Int = 20) {
     viewer {
       name
       issues(
-        first: 5
+        first: $total
         orderBy: { field: UPDATED_AT, direction: ASC }
         filterBy: { since: $date }
       ) {
@@ -30,7 +30,7 @@ const githubIssues = gql`
             createdAt
             updatedAt
             state
-            comments(first: 10) {
+            comments(first: $total) {
               edges {
                 node {
                   id
