@@ -1,5 +1,5 @@
 html {
-  background-color: rgb(216, 216, 239);
+  background-color: white;
   color: #333;
 }
 
@@ -10,4 +10,11 @@ body {
 
 header {
   font-size: 2.5em;
+}
+
+@media only screen and (max-width: 600px)  {
+  body {
+    padding: 0 1%;
+
+  }
 }

@@ -10,7 +10,7 @@
   font-weight: 300;
   text-align: center;
   border-radius: 4px;
-  border: none;
+  border: 1px solid rgb(0, 0, 0);
 }
 
 .issue-container {

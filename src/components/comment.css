@@ -14,14 +14,10 @@ img {
   margin-bottom: 5%;
   box-shadow: 1px 5px 10px 0 rgba(0,0,0,.1);;
   border-radius: 5px;
-  background: rgb(245, 245, 255);
+  background: white;
   font-size: 15px;
   line-height: 1.6;
-  width: 100%
-}
-
-.title .link {
-  color: rgb(255, 255, 255);
+  width: 100%;
 }
 
 .comment-info a {
@@ -29,10 +25,11 @@ img {
 }
 
 .comment-info > .title {
-  background-color: rgb(10, 8, 37);
+  background-color: rgb(236, 236, 236);
   padding-left: 10px;
   padding-top: 5px;
   height: 30px;
+  font-size: 13px;
 }
 
 
@@ -46,4 +43,5 @@ img {
   padding-right: 10px;
   font-size: 14px;
   line-height: 1.4;
+  word-wrap: break-word;
 }
