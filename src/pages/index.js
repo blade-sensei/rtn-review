@@ -7,7 +7,7 @@ import {
   GlobalStateContext,
 } from "../context/GlobalContextProvider"
 
-const Review = () => {
+const Index = () => {
   
   const state = useContext(GlobalStateContext);
   const [issues, setIssues] = useState([]);
@@ -97,4 +97,4 @@ const Review = () => {
   )
 }
 
-export default Review
+export default Index

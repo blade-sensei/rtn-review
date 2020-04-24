@@ -1,10 +1,12 @@
 import React from "react"
-import  ApolloClient  from 'apollo-boost';
+import ApolloClient  from 'apollo-boost';
 import githubToken from '../secrets'
+import fetch from 'isomorphic-fetch';
+
+
 
 export const GlobalStateContext = React.createContext()
 export const GlobalDispatchContext = React.createContext()
-
 
 const token = githubToken;
 const client = new ApolloClient({
@@ -15,7 +17,8 @@ const client = new ApolloClient({
         authorization: `Bearer ${token}`
       }
     })
-  }
+  },
+  fetch,
 });
 
 
