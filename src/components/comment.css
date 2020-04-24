@@ -12,7 +12,7 @@ img {
 
 .comment-info {
   margin-bottom: 5%;
-  box-shadow: 1px 5px 10px 0 rgba(0,0,0,.1);;
+  border: solid 1px rgb(128, 128, 128);
   border-radius: 5px;
   background: white;
   font-size: 15px;
@@ -25,11 +25,12 @@ img {
 }
 
 .comment-info > .title {
-  background-color: rgb(236, 236, 236);
+  background-color: rgb(237, 249, 255);
   padding-left: 10px;
   padding-top: 5px;
   height: 30px;
   font-size: 13px;
+  border-bottom: solid 1px rgb(23, 56, 42);
 }
 
 
