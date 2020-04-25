@@ -43,13 +43,23 @@ const Index = () => {
     })
     let { edges: issues  } = result.data.viewer.issues;
     if (currentDate) {
-      issues = filterByDate(issues, currentDate);
+      
       issues = issues.map(issue => {
         let comments = issue.node.comments.edges;
         comments = filterByDate(comments, currentDate);
         issue.node.comments.edges = comments;
         return issue;
       });
+      console.log(issues);
+      issues = issues.filter(({node: issue}) => {
+        const dateISO = currentDate.toDateString();
+        let instanceDate = new Date(issue.createdAt);
+        instanceDate = instanceDate.toDateString(); 
+        return (
+          instanceDate === dateISO ||
+          issue.comments.edges.length > 0
+        )
+      })
     }
     setIssues(issues);
   }
@@ -60,7 +70,7 @@ const Index = () => {
       
       variables = { date: initDate().toISOString()}
     } else {
-      variables = { date: currentDate.toISOString(), total: 5 }
+      variables = { date: currentDate.toISOString(), total: 50}
     }
     getGithubIssues(variables); 
   }, [currentDate]);
