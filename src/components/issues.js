@@ -28,7 +28,6 @@ const Issues = ({issue}) => {
 
   return (
     <div className='c-issue'>
-      { getArrow() }
         <div className='issue-info'>
           <span className="issue-title">
             <a href={ issue.url } target="_blank"> { issue.title} #{issue.number} / </a>
@@ -37,6 +36,7 @@ const Issues = ({issue}) => {
             <a href={ issue.repository.url } target="_blank"> {issue.repository.name}  </a>
             </span>
           <span className={`issue-state ${getState()}`}> { getState()} </span>
+          { getArrow() }
         <div className='labels'>
           {
             issue.labels.edges.map(({node: label }) => (

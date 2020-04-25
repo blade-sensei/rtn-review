@@ -43,14 +43,12 @@ const Index = () => {
     })
     let { edges: issues  } = result.data.viewer.issues;
     if (currentDate) {
-      
       issues = issues.map(issue => {
         let comments = issue.node.comments.edges;
         comments = filterByDate(comments, currentDate);
         issue.node.comments.edges = comments;
         return issue;
       });
-      console.log(issues);
       issues = issues.filter(({node: issue}) => {
         const dateISO = currentDate.toDateString();
         let instanceDate = new Date(issue.createdAt);

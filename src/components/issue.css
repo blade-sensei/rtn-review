@@ -1,9 +1,8 @@
-.c-issue > .icon-toggle {
+.issue-info > .icon-toggle {
   cursor: pointer;
   color: black;
-  height: 20px;
-  margin-right: 10px;
-  font-size: 1.6em;
+  margin-left: 10px;
+  font-size: 1.5em;
 }
 
 .c-issue {

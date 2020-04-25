@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  padding: 0 31%;
+  padding: 0 32%;
   font-family:  "Lucida Sans Unicode", "Lucida Grande", sans-serif
 }
 
@@ -14,7 +14,15 @@ header {
 
 @media only screen and (max-width: 600px)  {
   body {
-    padding: 0 1%;
+    padding: 0 2%;
+
+  }
+}
+
+
+@media only screen and (min-width: 601px) and (max-width: 1200px)   {
+  body {
+    padding: 0 20%;
 
   }
 }

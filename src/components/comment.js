@@ -24,17 +24,18 @@ const Comment = ({ comment }) => {
   const getArrow = () => {
     const icon = isOpen ? iconToggle.open : iconToggle.close;
     return (
-      <span className='icon-toggle' onClick={handlerToggle}> {icon} </span>
+      <span className='icon-toggle'> {icon} </span>
     )
   }
 
   return (
     <div className='c-comment'>
-      { getArrow()}
    
         <div className='comment-info'>
-          <div className='title'>
+          <div className='title'  onClick={handlerToggle}  >
             <a className='link' href={comment.url} target="_blank"> comment on : {formatDate(comment.updatedAt)} </a>
+            { getArrow()}
+
           </div>
           { isOpen && 
           <div className='comment-body markdown'>

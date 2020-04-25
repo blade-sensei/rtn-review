@@ -2,12 +2,12 @@ img {
   max-width: 80%;
 }
 
-.c-comment > .icon-toggle {
+.title .icon-toggle {
   cursor: pointer;
   color: black;
-  height: 20px;
+  font-size: 1.1em;  
+  float: right;
   margin-right: 10px;
-  font-size: 1.6em;  
 }
 
 .comment-info {
@@ -25,6 +25,7 @@ img {
 }
 
 .comment-info > .title {
+  cursor: pointer;
   background-color: rgb(237, 249, 255);
   padding-left: 10px;
   padding-top: 5px;
