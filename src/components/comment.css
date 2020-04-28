@@ -47,3 +47,7 @@ img {
   line-height: 1.4;
   word-wrap: break-word;
 }
+
+strong {
+  background-color: #7ff5f5de;
+}
