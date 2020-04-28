@@ -6,11 +6,14 @@ import './index.css';
 import {
   GlobalStateContext,
 } from "../context/GlobalContextProvider"
+import Loader from 'react-loader-spinner';
+
 
 const Index = () => {
   
   const state = useContext(GlobalStateContext);
   const [issues, setIssues] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   
 
   const initDate = () => {
@@ -37,10 +40,12 @@ const Index = () => {
   }
 
   const getGithubIssues = async (variables) => {
+    setIsLoading(true);
     const result = await state.client.query({
       query: githubIssues,
       variables,
     })
+    setIsLoading(false);
     let { edges: issues  } = result.data.viewer.issues;
     if (currentDate) {
       issues = issues.map(issue => {
@@ -88,8 +93,16 @@ const Index = () => {
       <div className="date-picker">
         <input type='date' value={formatDate()} onChange={handlerDate}/>
       </div>
-      
-      { (issues.length > 0) ? (
+      { isLoading === true ? 
+      <div className='spinner'>
+        <Loader
+          type='ThreeDots'
+          color='#5dc2f5'
+          height={30}
+          width={30} /> 
+      </div>
+       : 
+        (issues.length > 0) ? (
         issues.map(issue => {
           return (
             <div className='issue-container'>
