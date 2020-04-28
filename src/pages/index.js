@@ -87,32 +87,43 @@ const Index = () => {
     });
   }
 
+  const renderLoaderSpinner = () => {
+    return (
+      <div className='spinner'>
+        <Loader
+          type='ThreeDots'
+          color='#23d0d0'
+          height={40}
+          width={40} /> 
+      </div>
+    )
+  }
+
+  const renderNoDataMessage = () => {
+    return (
+      <div className='no-issues'> 🙌 : There is no updated or created issues for this selected date</div>
+    )
+  }
+
+  const renderIssues = () => {
+    return issues.map(issue => {
+      return (
+        <div className='issue-container'>
+          <Issues key={issue.node.id } issue={issue.node}/>
+        </div>
+      )
+    })
+  }
+
   return (
     <Layout>
 
       <div className="date-picker">
         <input type='date' value={formatDate()} onChange={handlerDate}/>
       </div>
-      { isLoading === true ? 
-      <div className='spinner'>
-        <Loader
-          type='ThreeDots'
-          color='#5dc2f5'
-          height={30}
-          width={30} /> 
-      </div>
-       : 
-        (issues.length > 0) ? (
-        issues.map(issue => {
-          return (
-            <div className='issue-container'>
-              <Issues key={issue.node.id } issue={issue.node}/>
-            </div>
-          )
-        })
-       ) : (
-       <div className='no-issues'> 🙌 : There is no updated or created issues for this selected date</div>
-       )
+      { isLoading === true ? renderLoaderSpinner() : 
+          (issues.length > 0) ? renderIssues() :
+            renderNoDataMessage()
       }
     </Layout>
   )
