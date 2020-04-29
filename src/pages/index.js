@@ -34,10 +34,16 @@ const Index = () => {
 
   const formatDate = () => {
     if (!currentDate) return '';
-    let formattedDate = currentDate.toLocaleDateString();
-    formattedDate = formattedDate.split('/').reverse().join('-');
+    let formattedDate = currentDate;
+    formattedDate.setMinutes(
+      currentDate.getMinutes() + (currentDate.getTimezoneOffset() * -1)
+    ); 
+    
+    formattedDate = formattedDate.toJSON();
+    formattedDate = formattedDate.slice(0, 10);
     return formattedDate
   }
+
 
   const getGithubIssues = async (variables) => {
     setIsLoading(true);
