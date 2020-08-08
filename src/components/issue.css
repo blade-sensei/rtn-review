@@ -1,8 +1,8 @@
-.issue-info > .icon-toggle {
+.icon-toggle {
   cursor: pointer;
-  color: black;
-  margin-left: 10px;
-  font-size: 1.5em;
+  color: #0366d6;
+  margin-left: 5px;
+  font-size: 1.1em;
 }
 
 .c-issue {
@@ -13,11 +13,11 @@
   text-decoration: none;
   color: black;
   font-weight: bold;
-  font-size: 1.6em;
+  font-size: 1.5em;
 }
 .issue-info a:hover {
   text-decoration: underline;
-  color: rgb(219, 11, 105);
+  color: #0366d6;
 }
 
 .repo-name a {

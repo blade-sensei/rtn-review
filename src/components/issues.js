@@ -36,7 +36,6 @@ const Issues = ({issue}) => {
             <a href={ issue.repository.url } target="_blank"> {issue.repository.name}  </a>
             </span>
           <span className={`issue-state ${getState()}`}> { getState()} </span>
-          { getArrow() }
         <div className='labels'>
           {
             issue.labels.edges.map(({node: label }) => (
@@ -44,6 +43,7 @@ const Issues = ({issue}) => {
             ))
           }
           <span className="total-comments">✍️ { issue.comments.edges.length } comments</span>
+          { getArrow() }
         </div>
         { isOpen && 
           issue.comments.edges.map(({ node:comment }) => (
