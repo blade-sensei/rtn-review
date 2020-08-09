@@ -70,3 +70,5 @@ yarn-error.log
 
 # Secrets
 src/secrets.js
+# Local Netlify folder
+.netlify

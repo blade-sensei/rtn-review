@@ -26,6 +26,7 @@
     "react-syntax-highlighter": "^12.2.1"
   },
   "devDependencies": {
+    "netlify-cli": "^2.59.0",
     "prettier": "2.0.4"
   },
   "repository": {
