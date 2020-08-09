@@ -1,4 +1,4 @@
-# Github issues + comments Single Page
+# Github Review (React single page)
 
 ## Goal
 
@@ -9,4 +9,8 @@ I builded this app in order to resolve my own problem. Get issue comments in a s
 
 # Technical
 ![](https://i.imgur.com/ejKZs4q.png)
+
+# Demo
+
+https://github-review.netlify.app/
 
