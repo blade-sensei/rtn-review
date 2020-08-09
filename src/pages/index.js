@@ -98,7 +98,7 @@ const Index = () => {
       <div className='spinner'>
         <Loader
           type='ThreeDots'
-          color='#23d0d0'
+          color='#0559e4'
           height={40}
           width={40} /> 
       </div>
